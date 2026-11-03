@@ -1,0 +1,19 @@
+{
+  "schema": "vanta.control-layout",
+  "version": 1,
+  "name": "VANTA Touch",
+  "author": "VANTA",
+  "buttons": [
+    { "id": "move-forward", "label": "W", "action": "KEY_W", "x": 0.08, "y": 0.55, "size": 56 },
+    { "id": "move-left", "label": "A", "action": "KEY_A", "x": 0.02, "y": 0.65, "size": 56 },
+    { "id": "move-back", "label": "S", "action": "KEY_S", "x": 0.08, "y": 0.75, "size": 56 },
+    { "id": "move-right", "label": "D", "action": "KEY_D", "x": 0.14, "y": 0.65, "size": 56 },
+    { "id": "jump", "label": "JUMP", "action": "SPACE", "x": 0.84, "y": 0.68, "size": 64 },
+    { "id": "sprint", "label": "SPRINT", "action": "CTRL", "x": 0.74, "y": 0.78, "size": 52 },
+    { "id": "sneak", "label": "SNEAK", "action": "SHIFT", "x": 0.65, "y": 0.78, "size": 48 },
+    { "id": "attack", "label": "ATTACK", "action": "MOUSE_LEFT", "x": 0.88, "y": 0.43, "size": 58 },
+    { "id": "use", "label": "USE", "action": "MOUSE_RIGHT", "x": 0.78, "y": 0.48, "size": 58 },
+    { "id": "inventory", "label": "INV", "action": "KEY_E", "x": 0.91, "y": 0.18, "size": 48 },
+    { "id": "chat", "label": "CHAT", "action": "KEY_T", "x": 0.04, "y": 0.12, "size": 48 }
+  ]
+}
