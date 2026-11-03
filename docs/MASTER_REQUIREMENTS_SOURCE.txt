@@ -1,0 +1,1473 @@
+MASTER DEVELOPMENT PROMPT — NEXT-GENERATION ANDROID MINECRAFT JAVA LAUNCHER
+
+1. PROJECT IDENTITY
+
+You are a senior Android software engineer, game launcher developer, UI/UX designer, graphics engineer, and build engineer.
+
+Your task is to design and develop a COMPLETE, FUNCTIONAL, production-oriented Android Minecraft Java Launcher.
+
+The application must be inspired by the functionality, usability, and overall experience of Zalith Launcher 2, but it must have its own original identity, branding, visual language, icons, layouts, and implementation.
+
+This is NOT a website.
+This is NOT a WebView application.
+This is NOT a static UI prototype.
+This is NOT a fake Minecraft launcher.
+
+It must be a genuine Android APK capable of installing, configuring, and launching Minecraft Java Edition on compatible Android devices.
+
+The project must prioritize real functionality, clean architecture, responsive performance, and a premium visual experience.
+
+Primary target
+
+- Platform: Android.
+- Architecture: ARM64 (aarch64).
+- Minimum target: Android 8.0+, subject to dependency compatibility.
+- Primary test device: Android 15, ARM64.
+- Orientation: LANDSCAPE.
+- Development environment: GitHub repository and GitHub Actions.
+- Build output: Installable APK.
+- UI language: ENGLISH ONLY.
+- Application category: Minecraft Java Launcher.
+
+Do not create a PC-only application.
+
+The launcher must be designed specifically for Android touchscreen devices.
+
+---
+
+2. DEVELOPMENT PHILOSOPHY
+
+Follow these rules throughout the entire development process.
+
+STRICT PROHIBITIONS:
+
+1. DO NOT create AI-slop UI.
+2. DO NOT use excessive gradients.
+3. DO NOT use rainbow colors.
+4. DO NOT use emojis as interface icons.
+5. DO NOT use cheap-looking icons.
+6. DO NOT create unnecessary decorative buttons.
+7. DO NOT create non-functional features that pretend to work.
+8. DO NOT generate fake FPS values.
+9. DO NOT generate fake Minecraft installation progress.
+10. DO NOT generate fake terminal output.
+11. DO NOT replace real functionality with static demonstrations.
+12. DO NOT randomly change the existing architecture without a reason.
+13. DO NOT delete working functionality when implementing new features.
+14. DO NOT leave important features as TODO comments.
+15. DO NOT use placeholder screens as finished implementations.
+16. DO NOT introduce unnecessary dependencies.
+17. DO NOT ignore Android lifecycle limitations.
+18. DO NOT claim compatibility with a Minecraft version without testing it.
+
+Every button must perform its advertised action.
+
+Every screen must have a clear purpose.
+
+Every animation must feel intentional.
+
+The source code must be organized, maintainable, and documented.
+
+If an API, library, or feature requires special permissions, credentials, or external configuration, document the requirement honestly.
+
+---
+
+3. TECHNOLOGY STACK
+
+Choose a technically appropriate Android architecture.
+
+Preferred technologies:
+
+- Kotlin.
+- Jetpack Compose.
+- Material 3 as a foundation, with a custom visual system.
+- Android NDK when native integration is necessary.
+- Java Runtime integration for Minecraft.
+- Existing compatible Android Minecraft Java launcher core.
+- OpenGL ES and Vulkan integration where supported by the selected rendering engine.
+- Gradle.
+- GitHub Actions for automated APK builds.
+
+Rust may be used for appropriate native components, but do not force Rust into components that are better implemented in Kotlin or Java.
+
+IMPORTANT:
+
+Research and evaluate existing Android Minecraft launcher engines before implementation.
+
+Investigate:
+
+- PojavLauncher.
+- Zalith Launcher 2.
+- Other compatible open-source Android Minecraft launcher projects.
+
+Understand their architecture, rendering systems, Java runtime handling, input systems, account management, and licensing.
+
+Reuse or integrate a proven engine where technically and legally appropriate.
+
+Do not blindly copy another application's branding or proprietary assets.
+
+If using GPL-licensed code, comply with the applicable license, attribution, source distribution, and additional naming requirements.
+
+---
+
+4. VISUAL DESIGN SYSTEM
+
+The application must have a premium, professional gaming-software appearance.
+
+Design direction:
+
+- Modern desktop-inspired interface.
+- Dark graphite background.
+- Deep charcoal surfaces.
+- Subtle neutral borders.
+- Carefully controlled white typography.
+- Slightly transparent white interface elements.
+- Restrained accent colors.
+- High-quality vector icons.
+- Smooth transitions.
+- Excellent spacing.
+- Clear visual hierarchy.
+
+Suggested colors:
+
+Background: #101114
+Secondary background: #17191E
+Surface: #1D2026
+Elevated surface: #242830
+Primary text: #F3F4F6
+Secondary text: #A5AAB4
+Muted text: #707784
+Border: #30343D
+Accent: #8FA9FF
+
+These colors are starting references, not rigid requirements.
+
+Avoid making every component a card.
+
+Use a combination of:
+
+- Sidebar navigation.
+- Editorial headings.
+- Structured panels.
+- Compact information rows.
+- Contextual dialogs.
+- Clean status indicators.
+
+The design must feel like a professionally developed desktop gaming application adapted for landscape Android.
+
+Typography
+
+Use professional fonts such as:
+
+- Inter.
+- Roboto.
+- Space Grotesk.
+
+Use consistent typography weights.
+
+Avoid oversized text everywhere.
+
+Icons
+
+Use high-quality vector icons.
+
+Preferred icon libraries:
+
+- Lucide.
+- Material Symbols.
+- Phosphor Icons.
+
+All icons must be consistent in stroke weight and proportions.
+
+Do not use emoji icons.
+
+---
+
+5. FIRST LAUNCH EXPERIENCE — RUN CODE />
+
+The first screen is extremely important.
+
+When the APK is opened for the first time, display a dedicated startup screen.
+
+The main visual element must be:
+
+RUN CODE />
+
+Use a clean, dark interface with a premium terminal-inspired appearance.
+
+Include:
+
+- Application logo.
+- Application name.
+- Version number.
+- A short technical subtitle.
+- A prominent RUN CODE /> button.
+- Subtle background animation.
+- Minimal visual noise.
+
+The RUN CODE /> button must be functional.
+
+When pressed, start the initial setup sequence.
+
+BOOT SEQUENCE
+
+Create a sophisticated boot/loading experience.
+
+The screen should resemble a professional operating system initialization sequence mixed with a gaming launcher startup.
+
+Example visual content:
+
+[ SYSTEM INITIALIZATION ]
+
+«Initializing launcher environment...
+Checking Android architecture...
+Detecting available memory...
+Verifying application directories...
+Initializing graphics environment...
+Checking Java runtime availability...
+Preparing Minecraft engine...
+Initializing launcher modules...
+Verifying local configuration...
+Startup checks completed.»
+
+The actual messages must correspond to real checks or initialization operations.
+
+Do not simply display fake terminal messages.
+
+Boot animation requirements
+
+- Minimum initial startup presentation: approximately 50 seconds.
+- Use a staged sequence with a polished animation.
+- Display a live progress indicator.
+- Display actual initialization messages.
+- Include a subtle animated cursor.
+- Use smooth fade and transition effects.
+- Show a completion status.
+- Do not block the Android main thread.
+- Do not perform unnecessary expensive operations merely to waste time.
+
+The 50-second requirement is a presentation requirement for the initial first-launch experience. If initialization finishes earlier, show the completed state while maintaining the intended presentation duration.
+
+If initialization takes longer, continue displaying genuine progress.
+
+Completion screen
+
+When the initialization is complete, display:
+
+FINISHED
+
+System initialization completed successfully.
+
+[ NEXT ]
+
+The NEXT button must only become active after successful initialization.
+
+Pressing NEXT opens the main launcher dashboard.
+
+If initialization fails, show the actual error and a retry option.
+
+Do not falsely report successful initialization.
+
+For subsequent application launches, provide a shorter startup experience instead of repeating the entire first-run setup.
+
+---
+
+6. MAIN DASHBOARD
+
+Create a fully functional main dashboard.
+
+The dashboard must include:
+
+- Application logo.
+- Sidebar navigation.
+- Selected Minecraft installation.
+- Selected Minecraft version.
+- Account status.
+- Java runtime status.
+- Installed mod count.
+- Installed resource pack count.
+- Memory configuration.
+- Graphics configuration.
+- Game launch button.
+
+The primary button must say:
+
+LAUNCH
+
+When pressed, start the actual Minecraft preparation and launch workflow.
+
+Other navigation sections:
+
+1. Home.
+2. Versions.
+3. Instances.
+4. Mods.
+5. Modpacks.
+6. Resource Packs.
+7. Shader Packs.
+8. Worlds.
+9. Accounts.
+10. Skins.
+11. Controls.
+12. Graphics.
+13. Java Settings.
+14. Downloads.
+15. Console.
+16. Settings.
+17. About.
+
+All navigation must work.
+
+Do not create dead navigation items.
+
+---
+
+7. MINECRAFT VERSION MANAGER
+
+Implement a genuine Minecraft version manager.
+
+Retrieve available Minecraft versions from the official Mojang version manifest.
+
+Support, subject to engine compatibility:
+
+- Latest Release.
+- Latest Snapshot.
+- Release versions.
+- Snapshot versions.
+- Old Beta versions.
+- Old Alpha versions.
+- Historical versions.
+
+Users must be able to search and filter versions.
+
+Each version entry should display:
+
+- Version identifier.
+- Version type.
+- Release date.
+- Installation status.
+- Available mod loader compatibility.
+
+Installation workflow
+
+When the user selects a version:
+
+1. Retrieve version metadata.
+2. Verify the required Java runtime.
+3. Download required game assets.
+4. Download libraries.
+5. Download the client JAR.
+6. Prepare the version directory.
+7. Validate downloaded files.
+8. Register the installation.
+9. Display the actual installation result.
+
+Provide download progress and cancellation.
+
+Support resumable downloads when possible.
+
+Never fabricate download progress.
+
+---
+
+8. INSTANCE MANAGER
+
+Create an independent instance management system.
+
+Each instance must have:
+
+- Its own Minecraft version.
+- Its own mod loader.
+- Its own mods.
+- Its own configuration.
+- Its own resource packs.
+- Its own shader packs.
+- Its own game settings.
+- Its own memory configuration.
+- Its own logs.
+
+Allow users to:
+
+- Create instances.
+- Rename instances.
+- Duplicate instances.
+- Delete instances.
+- Change versions.
+- Open instance folders.
+- Export configurations.
+- Import supported modpacks.
+
+One instance must not accidentally overwrite another instance's data.
+
+---
+
+9. MODRINTH INTEGRATION
+
+Integrate the official Modrinth API.
+
+Provide:
+
+- Mod search.
+- Mod details.
+- Mod descriptions.
+- Version selection.
+- Minecraft version filters.
+- Fabric filters.
+- Forge filters.
+- NeoForge filters.
+- Quilt filters.
+- Download buttons.
+- Installed mod management.
+- Update checking.
+
+Automatically resolve compatible dependencies.
+
+Check:
+
+- Minecraft version compatibility.
+- Mod loader compatibility.
+- Required dependencies.
+- Conflicting dependencies.
+- Duplicate installations.
+
+Display installation errors clearly.
+
+Do not silently install incompatible mods.
+
+---
+
+10. CURSEFORGE INTEGRATION
+
+Integrate CurseForge where API access and terms permit.
+
+Support:
+
+- Mod search.
+- Mod details.
+- Mod version selection.
+- Modpack browsing.
+- Modpack installation.
+- Dependency resolution where supported.
+
+Respect CurseForge API requirements.
+
+Do not embed private API keys in public source code or APK files.
+
+If a feature requires an API key, provide a secure configuration mechanism and document it.
+
+If access is unavailable, display a clear explanation instead of pretending the integration works.
+
+---
+
+11. MOD LOADER MANAGER
+
+Support compatible installations of:
+
+- Fabric.
+- Forge.
+- NeoForge.
+- Quilt.
+
+Allow the user to choose a loader version.
+
+Automatically check loader compatibility against the selected Minecraft version.
+
+Display the selected loader in the instance information.
+
+Do not assume every loader supports every Minecraft version.
+
+---
+
+12. MICROSOFT ACCOUNT LOGIN
+
+Implement legitimate Microsoft account authentication.
+
+The login experience should include:
+
+- Microsoft sign-in.
+- Browser-based OAuth authentication.
+- Appropriate redirect handling.
+- Xbox authentication.
+- Minecraft Services authentication.
+- Ownership verification.
+- Access token handling.
+- Secure token storage.
+- Logout.
+- Account switching.
+- Authentication error handling.
+
+Never request or store the user's Microsoft password directly.
+
+Never hardcode private credentials.
+
+Follow Microsoft's current OAuth requirements and Minecraft authentication requirements.
+
+Do not claim that a user owns Minecraft unless the required verification succeeds.
+
+---
+
+13. OFFLINE ACCOUNT LOGIN
+
+Implement offline profile support.
+
+Allow users to:
+
+- Enter a username.
+- Create a local profile.
+- Select a profile icon.
+- Rename a local profile.
+- Delete a local profile.
+
+Clearly distinguish offline profiles from authenticated Microsoft accounts.
+
+Offline mode must not bypass Minecraft ownership or official multiplayer authentication requirements.
+
+---
+
+14. SKIN MANAGER
+
+Create a dedicated skin management section.
+
+Features:
+
+- Upload PNG skin files.
+- Preview skins.
+- Support Classic and Slim models.
+- 3D character preview.
+- Rotate the preview character.
+- Zoom the preview.
+- Select a skin.
+- Save local skin files.
+- Apply skins through supported authenticated Minecraft services.
+
+Clearly distinguish between local offline skin previews and official account skin changes.
+
+The interface must be polished and easy to use.
+
+---
+
+15. AUTOMATIC DIRECTORY MANAGEMENT
+
+The application must automatically create and manage the required Minecraft directories.
+
+Example structure:
+
+/MinecraftLauncher/
+/accounts/
+/assets/
+/libraries/
+/versions/
+/instances/
+/Instance-01/
+/mods/
+/config/
+/resourcepacks/
+/shaderpacks/
+/saves/
+/logs/
+/screenshots/
+/crash-reports/
+/runtime/
+/skins/
+/downloads/
+/backups/
+/logs/
+/profiles/
+
+The actual directory structure must follow Android storage permissions and the selected engine's requirements.
+
+Important:
+
+- Create missing directories automatically.
+- Preserve existing files.
+- Never delete user worlds during updates.
+- Avoid unnecessary storage permissions.
+- Use Android Storage Access Framework where appropriate.
+- Provide an option to select an external game directory when supported.
+
+---
+
+16. GRAPHICS SETTINGS
+
+Create a dedicated graphics configuration interface.
+
+The launcher must expose graphics options supported by the actual renderer and engine.
+
+Rendering APIs
+
+Provide:
+
+- OpenGL ES.
+- Vulkan, when supported by the selected engine and device.
+
+Detect available graphics capabilities.
+
+Do not display an option as available if the device or engine cannot use it.
+
+Allow the user to select a supported rendering backend.
+
+Display clear warnings for unsupported configurations.
+
+Resolution settings
+
+Provide selectable resolution presets.
+
+Examples:
+
+- 50%.
+- 60%.
+- 70%.
+- 80%.
+- 90%.
+- 100%.
+
+Also allow custom resolution scaling within safe limits.
+
+Allow adjustment of:
+
+- Render resolution.
+- GUI scale.
+- Window scaling.
+- Fullscreen behavior.
+- Frame limit.
+- VSync, where supported.
+
+Ensure settings are applied to the actual game process.
+
+---
+
+17. MEMORY AND JAVA CONFIGURATION
+
+Create a dedicated Java settings page.
+
+Display:
+
+- Detected Java runtimes.
+- Java version.
+- Architecture.
+- Runtime availability.
+- Memory allocation.
+- JVM arguments.
+- Runtime selection.
+
+Allow users to configure memory allocation.
+
+Validate memory limits against available device memory.
+
+Provide sensible defaults.
+
+Do not recommend allocating all available RAM.
+
+Support Java versions required by the selected Minecraft version.
+
+Do not assume one Java runtime works with every Minecraft release.
+
+---
+
+18. CUSTOM ANDROID GAME CONTROLS
+
+This is a critical feature.
+
+The launcher must provide a comfortable touch-control system comparable in functionality to established Android Minecraft Java launchers.
+
+Use the existing compatible engine's input and virtual-control capabilities whenever possible.
+
+Default controls
+
+Include:
+
+- Virtual joystick.
+- Movement controls.
+- Jump.
+- Sprint.
+- Sneak.
+- Attack.
+- Interact.
+- Inventory.
+- Chat.
+- Hotbar controls.
+- Mouse emulation.
+- Camera movement.
+
+Control editor
+
+Allow users to:
+
+- Move buttons.
+- Resize buttons.
+- Change opacity.
+- Change button spacing.
+- Customize button actions.
+- Add custom buttons.
+- Remove unnecessary buttons.
+- Save control profiles.
+- Restore default layouts.
+
+Support multiple control layouts.
+
+Mouse settings
+
+Implement mouse configuration.
+
+Allow adjustment of:
+
+- Mouse cursor size.
+- Mouse sensitivity.
+- Pointer speed.
+- Scroll sensitivity.
+- Touch-to-mouse behavior.
+
+The mouse cursor must be visible and functional during Minecraft gameplay.
+
+Provide a mouse visibility toggle where supported.
+
+Support physical keyboards and compatible Bluetooth gamepads.
+
+Do not create an input system that only works inside the launcher UI. It must work inside the actual Minecraft game.
+
+---
+
+19. IN-GAME FPS OVERLAY
+
+Create an in-game performance overlay.
+
+It must be visible during Minecraft gameplay.
+
+Example:
+
+= FPS 60
+
+Visual style:
+
+- Small typography.
+- Transparent dark background or subtle translucent white surface.
+- White text.
+- Minimal borders.
+- Clean positioning.
+- No excessive decoration.
+
+The FPS value must be REAL-TIME.
+
+Retrieve actual performance information from the rendering engine or a reliable frame-timing mechanism.
+
+Never generate random FPS values.
+
+Allow users to:
+
+- Enable or disable the overlay.
+- Change its position.
+- Adjust text size.
+- Adjust opacity.
+- Select which statistics appear.
+
+Optional statistics:
+
+- FPS.
+- Frame time.
+- Memory usage.
+- Java heap usage.
+- Renderer.
+- Resolution.
+- Runtime information.
+
+Do not display unavailable statistics as if they were real.
+
+---
+
+20. IN-GAME OVERLAY MENU
+
+When the user taps the "=" overlay control, open a compact in-game menu.
+
+The menu must appear over Minecraft without unnecessarily terminating the game.
+
+Include:
+
+1. Resume Game.
+2. Show Logs.
+3. Performance Monitor.
+4. Control Settings.
+5. Mouse Settings.
+6. Screenshot.
+7. Game Information.
+8. Quick Settings.
+9. Force Stop.
+10. Exit Game.
+
+Show Logs
+
+Display real-time game logs.
+
+Allow:
+
+- Scrolling.
+- Searching.
+- Filtering.
+- Copying.
+- Clearing the displayed view without deleting original logs.
+
+Force Stop
+
+Require confirmation.
+
+Explain that force-stopping the game may interrupt unsaved progress.
+
+Resume Game
+
+Close the overlay and return to Minecraft.
+
+Use smooth animations.
+
+---
+
+21. REAL TERMINAL AND LOG SYSTEM
+
+Implement an actual terminal/log viewer.
+
+Do not build a decorative terminal that only prints predefined messages.
+
+Capture output from:
+
+- Launcher initialization.
+- Minecraft downloads.
+- Java runtime.
+- Minecraft startup.
+- Mod loader initialization.
+- Renderer initialization.
+- Game errors.
+- Crash reports.
+
+Example:
+
+[20:41:01] [Launcher] Initializing...
+[20:41:02] [Runtime] Java runtime detected.
+[20:41:03] [Version] Minecraft 1.21.11
+[20:41:04] [Loader] Fabric detected.
+[20:41:05] [Assets] Validating game assets...
+[20:41:07] [Mods] Loading installed mods...
+[20:41:09] [Renderer] Initializing graphics backend...
+[20:41:12] [Game] Starting Minecraft...
+
+The timestamps and messages must originate from actual events.
+
+Support:
+
+- Live log streaming.
+- Log levels.
+- Search.
+- Copy.
+- Export.
+- Clear display.
+- Crash report access.
+
+Use visually distinct log levels without excessive colors.
+
+---
+
+22. LAUNCH GAME WORKFLOW
+
+When the user presses LAUNCH, display a professional preparation interface.
+
+Suggested stages:
+
+1. Analyzing installation.
+2. Checking selected Minecraft version.
+3. Verifying Java runtime.
+4. Checking available memory.
+5. Validating libraries.
+6. Checking mod compatibility.
+7. Preparing assets.
+8. Preparing graphics backend.
+9. Initializing input controls.
+10. Starting Minecraft Java.
+
+The duration must vary naturally according to actual work.
+
+A cached installation should generally start faster than a fresh installation.
+
+A large modpack may take longer.
+
+Do not add artificial delays to make every launch appear busy.
+
+Do not randomly fabricate analysis messages.
+
+Display actual progress where measurable.
+
+If a stage fails, show the real error and an actionable recovery option.
+
+---
+
+23. BACKGROUND GAME PERSISTENCE
+
+This feature is extremely important.
+
+The user must be able to:
+
+1. Launch Minecraft Java.
+2. Press the Android Home button.
+3. Open another application.
+4. Return to the launcher.
+5. Resume the existing Minecraft process if it is still alive.
+
+The launcher must not automatically terminate Minecraft merely because the launcher UI is no longer visible.
+
+Investigate Android lifecycle behavior, foreground services, process management, and the requirements of the selected Minecraft engine.
+
+Implement an appropriate background execution strategy.
+
+Important limitations:
+
+- Android may pause or throttle background applications.
+- Android may reclaim memory and terminate processes.
+- Battery optimization may affect background execution.
+- A foreground service does not guarantee unlimited execution.
+- Multiplayer disconnection may still occur if the process or network is interrupted.
+
+When possible, preserve the game process and its rendering context.
+
+When the process has been terminated, detect that condition and provide a safe recovery path.
+
+Do not claim that a terminated Minecraft session can always be resumed exactly where it stopped.
+
+---
+
+24. WORLDS AND SAVED DATA
+
+Create a world manager.
+
+Display:
+
+- World name.
+- Last played date.
+- Game version.
+- Game mode, when available.
+- World icon.
+- Save directory.
+
+Provide:
+
+- Open world.
+- Rename world.
+- Backup world.
+- Restore world.
+- Delete world with confirmation.
+- Import supported world saves.
+
+Never silently overwrite existing worlds.
+
+World backups must be stored safely.
+
+---
+
+25. RESOURCE PACKS AND SHADERS
+
+Create dedicated management sections.
+
+Resource Packs
+
+- Import ZIP files.
+- Display installed packs.
+- Enable and disable packs.
+- Remove packs.
+- Show compatibility information.
+
+Shader Packs
+
+- Import supported shader files.
+- Display installed shaders.
+- Enable and disable shaders.
+- Show renderer compatibility.
+- Warn about unsupported shaders.
+
+Shader support depends on the selected renderer, Minecraft version, and graphics environment.
+
+Do not promise that every Java shader works on Android.
+
+---
+
+26. BACKGROUND DOWNLOAD MANAGER
+
+Create a download management interface.
+
+Display:
+
+- Download name.
+- Download progress.
+- Download speed.
+- Download size.
+- Remaining size, when available.
+- Status.
+- Cancel button.
+
+Support:
+
+- Multiple queued downloads.
+- Retry.
+- Resume when supported.
+- Error reporting.
+- Download history.
+
+All progress and speed values must be measured from actual downloads.
+
+---
+
+27. SETTINGS
+
+Create a complete settings section.
+
+Categories:
+
+GENERAL
+
+- Language.
+- Theme.
+- Startup behavior.
+- Notifications.
+
+GAME
+
+- Default Minecraft version.
+- Default instance.
+- Default memory allocation.
+- Default launch behavior.
+
+GRAPHICS
+
+- Rendering backend.
+- Resolution scaling.
+- Frame limit.
+- VSync.
+
+CONTROLS
+
+- Touch layout.
+- Mouse.
+- Keyboard.
+- Gamepad.
+
+STORAGE
+
+- Game directory.
+- Download directory.
+- Backup directory.
+- Storage information.
+
+ADVANCED
+
+- JVM arguments.
+- Runtime selection.
+- Debug logging.
+- Diagnostic information.
+
+ABOUT
+
+- Application version.
+- Credits.
+- Open-source licenses.
+- Project information.
+
+Persist settings properly.
+
+---
+
+28. ANIMATIONS AND VISUAL EFFECTS
+
+All interactive elements must have polished animations.
+
+Required:
+
+- Smooth screen transitions.
+- Button press feedback.
+- Subtle hover-like feedback where applicable.
+- Sidebar selection animations.
+- Modal transitions.
+- Loading animations.
+- Progress animations.
+- Boot sequence transitions.
+- Terminal message appearance.
+- Overlay opening and closing.
+- Fade effects.
+
+Use a consistent motion system.
+
+Animations must be lightweight and optimized for Android.
+
+Avoid excessive particle effects and expensive blur.
+
+Do not reduce game performance for decorative animations.
+
+Use appropriate Kotlin/Compose animation APIs or GSAP only if a justified embedded web component is genuinely required. Prefer native Android animation.
+
+---
+
+29. PERFORMANCE AND DEVICE COMPATIBILITY
+
+Target ARM64 Android devices.
+
+The application must be designed for phones with limited thermal and memory budgets.
+
+Priorities:
+
+- Efficient memory usage.
+- Fast application startup.
+- No unnecessary background tasks.
+- Responsive UI.
+- Correct lifecycle management.
+- Efficient file operations.
+- Safe concurrent downloads.
+- Stable Java process management.
+
+Test on a representative Android device where possible.
+
+Include diagnostic information for:
+
+- CPU architecture.
+- Android version.
+- Available memory.
+- Graphics capabilities.
+- Java runtime.
+- Renderer support.
+- Storage availability.
+
+Do not assume every Android device supports Vulkan or the same OpenGL extensions.
+
+---
+
+30. SECURITY AND ACCOUNT SAFETY
+
+Implement secure handling of:
+
+- Microsoft access tokens.
+- Refresh tokens.
+- Account information.
+- API configuration.
+- Download verification.
+- Local files.
+
+Never store passwords in plaintext.
+
+Never expose private API keys in public repositories.
+
+Never request unnecessary Android permissions.
+
+Use secure storage appropriate for Android.
+
+Follow official authentication and API requirements.
+
+---
+
+31. PROJECT STRUCTURE
+
+Organize the project into clear modules.
+
+Suggested structure:
+
+app/
+src/
+main/
+java/
+launcher/
+ui/
+navigation/
+dashboard/
+versions/
+instances/
+accounts/
+skins/
+mods/
+modpacks/
+controls/
+graphics/
+settings/
+terminal/
+overlay/
+downloads/
+storage/
+runtime/
+engine/
+authentication/
+services/
+utils/
+res/
+drawable/
+mipmap/
+values/
+xml/
+
+core/
+launcher/
+minecraft/
+downloads/
+runtime/
+accounts/
+modmanager/
+graphics/
+controls/
+
+native/
+renderer/
+engine/
+
+.github/
+workflows/
+android-build.yml
+
+The actual architecture may differ if the selected engine requires another structure.
+
+Do not create empty modules simply to imitate this tree.
+
+---
+
+32. GITHUB ACTIONS AND APK BUILD
+
+The project must be buildable through GitHub Actions.
+
+Create a proper Android CI workflow.
+
+Requirements:
+
+- Set up JDK.
+- Set up Android SDK.
+- Configure Gradle.
+- Resolve dependencies.
+- Run compilation.
+- Run available tests.
+- Build debug APK.
+- Upload APK as a GitHub Actions artifact.
+
+If signing is configured, support release APK generation using GitHub Secrets.
+
+Never commit keystore files or signing passwords.
+
+The workflow must produce a downloadable APK.
+
+Provide clear build failure information.
+
+Do not claim that the build succeeded without a successful build result.
+
+The project must not depend on Android Studio being installed on the user's phone.
+
+---
+
+33. TESTING AND QUALITY ASSURANCE
+
+Test the following:
+
+- First launch.
+- Boot sequence.
+- Initial setup.
+- Main dashboard.
+- Navigation.
+- Version selection.
+- Minecraft installation.
+- Java runtime detection.
+- Account login.
+- Offline profile.
+- Mod installation.
+- Mod compatibility.
+- Directory creation.
+- Graphics selection.
+- Resolution settings.
+- Touch controls.
+- Mouse controls.
+- Game launch.
+- Terminal logs.
+- FPS reporting.
+- In-game overlay.
+- Background behavior.
+- World saving.
+- APK installation.
+
+Fix compile errors before adding more features.
+
+Do not introduce multiple unrelated changes in one debugging step.
+
+Preserve working functionality during refactoring.
+
+---
+
+34. IMPLEMENTATION STRATEGY
+
+Do not attempt to implement every feature in one uncontrolled code dump.
+
+Work in clearly defined phases.
+
+PHASE 1 — FOUNDATION
+
+- Project setup.
+- Android configuration.
+- Landscape orientation.
+- Design system.
+- Application icon.
+- Navigation.
+- RUN CODE /> startup screen.
+- Boot sequence.
+- Main dashboard.
+
+PHASE 2 — MINECRAFT ENGINE
+
+- Research and integrate the Android Minecraft Java engine.
+- Java runtime.
+- Renderer initialization.
+- Basic Minecraft launch.
+- Real logs.
+- Error handling.
+
+PHASE 3 — VERSION SYSTEM
+
+- Official version manifest.
+- Version selection.
+- Downloads.
+- Installation.
+- Instance manager.
+
+PHASE 4 — ACCOUNTS
+
+- Microsoft authentication.
+- Offline profiles.
+- Account manager.
+- Skin manager.
+
+PHASE 5 — MOD MANAGEMENT
+
+- Modrinth.
+- CurseForge.
+- Fabric.
+- Forge.
+- NeoForge.
+- Quilt.
+- Dependency resolution.
+
+PHASE 6 — GAME EXPERIENCE
+
+- Touch controls.
+- Mouse.
+- Gamepad.
+- Graphics settings.
+- Resolution.
+- FPS overlay.
+- In-game menu.
+
+PHASE 7 — ADVANCED FEATURES
+
+- Background persistence.
+- World manager.
+- Resource packs.
+- Shader packs.
+- Download manager.
+- Backup manager.
+
+PHASE 8 — FINAL QUALITY
+
+- Performance optimization.
+- UI polish.
+- Accessibility.
+- Testing.
+- Bug fixing.
+- GitHub Actions.
+- APK release.
+
+At every phase, maintain a working build.
+
+Do not move to the next phase if the current phase has unresolved critical compilation or integration errors.
+
+---
+
+35. REQUIRED DEVELOPMENT REPORTS
+
+After each implementation phase, report:
+
+1. What was implemented.
+2. Which files were created.
+3. Which files were modified.
+4. Which dependencies were added.
+5. What was tested.
+6. What succeeded.
+7. What failed.
+8. What remains incomplete.
+9. How to build the APK.
+10. Known limitations.
+
+Never claim a feature is complete when it is only represented by UI.
+
+For difficult integrations, explain the actual blocker and propose a technically valid solution.
+
+---
+
+36. FINAL ACCEPTANCE CRITERIA
+
+The project is not considered complete merely because it compiles.
+
+The final application must satisfy these requirements:
+
+[ ] Original application branding.
+[ ] Premium landscape Android interface.
+[ ] RUN CODE /> first-launch experience.
+[ ] Functional initialization sequence.
+[ ] NEXT button after initialization.
+[ ] Functional main dashboard.
+[ ] Real Minecraft Java engine integration.
+[ ] Actual Minecraft version manager.
+[ ] Actual Minecraft installation.
+[ ] Multiple independent instances.
+[ ] Microsoft authentication.
+[ ] Offline profiles.
+[ ] Skin management.
+[ ] Modrinth integration.
+[ ] CurseForge integration where permitted.
+[ ] Mod loader management.
+[ ] Automatic directory management.
+[ ] OpenGL support where available.
+[ ] Vulkan support where available.
+[ ] Resolution configuration.
+[ ] Java runtime management.
+[ ] Memory configuration.
+[ ] Custom touch controls.
+[ ] Joystick.
+[ ] Sprint and movement controls.
+[ ] Editable mouse settings.
+[ ] Actual FPS reporting.
+[ ] In-game "=" overlay.
+[ ] Real terminal and logs.
+[ ] Background persistence strategy.
+[ ] World management.
+[ ] Resource pack management.
+[ ] Shader pack management.
+[ ] Download manager.
+[ ] Smooth animations.
+[ ] Stable application lifecycle.
+[ ] GitHub Actions build workflow.
+[ ] Installable Android APK.
+
+A feature that cannot be implemented due to an engine limitation or Android restriction must be explicitly documented rather than falsely marked complete.
+
+---
+
+37. FINAL INSTRUCTIONS
+
+Think like an experienced Android launcher engineering team.
+
+Research the existing technology before writing the core implementation.
+
+Prioritize a working Minecraft Java launcher over visual demonstrations.
+
+Use the existing proven Android Minecraft engine whenever appropriate.
+
+Keep the design original while aiming for the same level of usability and completeness as Zalith Launcher 2.
+
+The application must look professional, feel responsive, and behave consistently.
+
+Do not sacrifice functionality for appearance.
+
+Do not sacrifice performance for unnecessary effects.
+
+Do not sacrifice stability for an excessive number of features.
+
+The final objective is:
+
+A fully functional, premium-quality Android Minecraft Java Launcher with its own identity, advanced graphics configuration, account management, mod ecosystem, customizable controls, real-time diagnostics, and a polished gaming experience.
+
+Build a real launcher. Not a mockup. Not a concept. Not a fake demonstration.
+
+Start by researching the engine architecture, checking its license, defining the implementation plan, and establishing a buildable Android project.
+
+Then implement and test each phase systematically.
