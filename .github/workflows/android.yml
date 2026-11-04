@@ -2,20 +2,22 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: ["main", "master"]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: ["main", "master"]
   workflow_dispatch:
 
 permissions:
   contents: read
 
-env:
-  GRADLE_OPTS: -Dorg.gradle.daemon=false
+concurrency:
+  group: android-ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-debug:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,29 +26,32 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
+          cache: gradle
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android platform
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      # Do not install the obsolete "tools" package. The current SDK uses
+      # cmdline-tools (provided by setup-android), platform-tools, platform
+      # and build-tools packages.
+      - name: Install required Android SDK packages
+        run: |
+          sdkmanager --install             "platform-tools"             "platforms;android-35"             "build-tools;35.0.0"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.9'
 
-      - name: Run unit tests
-        run: gradle --no-daemon :app:testDebugUnitTest
+      - name: Build and test
+        run: |
+          gradle --version
+          gradle --no-daemon :app:testDebugUnitTest
+          gradle --no-daemon :app:assembleDebug
 
-      - name: Build debug APK
-        run: gradle --no-daemon :app:assembleDebug
-
-      - name: Upload APK
+      - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: VANTA-Launcher-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: VANTA-Launcher/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
