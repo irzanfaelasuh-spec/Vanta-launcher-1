@@ -41,25 +41,12 @@ jobs:
           java-version: "17"
           cache: gradle
 
-      - name: Setup Android Command Line Tools
-        run: |
-          SDKMANAGER="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
-
-          if [ ! -f "$SDKMANAGER" ]; then
-            echo "ERROR: Android sdkmanager not found!"
-            echo "Expected path: $SDKMANAGER"
-            exit 1
-          fi
-
-          echo "Android SDK Manager found."
-
-      - name: Accept Android SDK Licenses
-        run: |
-          yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Install Android SDK Packages
         run: |
-          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" \
+          sdkmanager --install \
             "platform-tools" \
             "platforms;android-35" \
             "build-tools;35.0.0"
@@ -68,33 +55,43 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Verify Gradle
-        run: |
-          gradle --version
+        run: gradle --version
 
       - name: Run Unit Tests
-        run: |
-          gradle --no-daemon :app:testDebugUnitTest
+        run: gradle --no-daemon :app:testDebugUnitTest
 
       - name: Build Debug APK
-        run: |
-          gradle --no-daemon :app:assembleDebug
+        run: gradle --no-daemon :app:assembleDebug
 
-      - name: Verify APK
+      - name: Find Generated APK
+        shell: bash
         run: |
-          APK_PATH="VANTA-Launcher/app/build/outputs/apk/debug/app-debug.apk"
+          set -e
 
-          if [ ! -f "$APK_PATH" ]; then
-            echo "ERROR: APK was not generated!"
+          echo "Searching for generated APK..."
+
+          APK_PATH="$(find "$GITHUB_WORKSPACE" \
+            -type f \
+            -name "app-debug.apk" \
+            -path "*/build/outputs/apk/debug/*" \
+            -print -quit)"
+
+          if [ -z "$APK_PATH" ]; then
+            echo "::error::APK was not generated!"
+            echo "Checking available APK files..."
+            find "$GITHUB_WORKSPACE" -type f -name "*.apk" -print
             exit 1
           fi
 
-          echo "APK successfully generated."
+          echo "APK_PATH=$APK_PATH" >> "$GITHUB_ENV"
+
+          echo "APK successfully generated!"
           ls -lh "$APK_PATH"
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: VANTA-Launcher-debug
-          path: VANTA-Launcher/app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.APK_PATH }}
           if-no-files-found: error
           retention-days: 14
